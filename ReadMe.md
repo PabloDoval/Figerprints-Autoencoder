@@ -17,6 +17,4 @@ Once the fingerprint has been classified, it will be passed to the actual matchi
 
 ## Persons of Interest
 
-The stakeholders are:
-
 * Pablo Alvarez Doval (<palvarez@plainconcepts.com>)
