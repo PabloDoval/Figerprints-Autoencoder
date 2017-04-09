@@ -37,6 +37,8 @@ The default file layout and names in the dataset is not very convenient for the 
     + G: Gender, with possible values F and M
     + C: Fingerprint Class
 
+Once the files have been distributed and renamed, a last processing stage takes place. The goal is to convert the images into a text file, with the labels in [One-Hot Encoding](https://en.wikipedia.org/wiki/One-hot) format, followed by the list of all the pixels in a single vector of 262.144 bytes, which will be the format that will be fed to the autoencoder.
+
 ### Code Dictionaries for naming conventions:
 
 **Codes for Order of fingerprint**
@@ -80,6 +82,10 @@ The default file layout and names in the dataset is not very convenient for the 
 
 ## Usage Instructions
 
-The dataset is not distributed with the figerprint classification model, although it can be downloaded manually from the [NIST-SD4 page](https://www.nist.gov/srd/nist-special-database-4). It can also be downloaded automatically running the following Python command from the DataSets/NIST-SD4 directory:
+The dataset is not distributed with the figerprint classification model, although it can be downloaded from the [NIST-SD4 page](https://www.nist.gov/srd/nist-special-database-4). It can be downloaded, and have the previously described transformations applied automatically, by running the following Python command from the base directory:
 
-`python setup_dataset.py`
+`python retrieve_dataset.py`
+
+Once the dataset is retrieved, the files should be further processed to be fed to the autoencoder. This processing can be done by executing the following Python command:
+
+`python process_dataset.py`
