@@ -8,7 +8,6 @@ import struct
 import sys
 from scipy.misc import imread
 
-
 def encodeFingerprintClassFromFileName(fileName):
     """Converts the fingerprintType into the one-hot encoding format."""
     fileName = os.path.basename(fileName)
@@ -25,22 +24,24 @@ def encodeFingerprintClassFromFileName(fileName):
     elif fingerprintClass.upper() == "W":
         return np.array([0, 0, 0, 0, 1])
 
-
 def imagesToVector(sourceFolder, imagesToProcess = 0):
     """Converts the PNG images to a one-dimensional vector, with an initial one-hot encodding for the feature"""
 
     # Iterate all the images allowed by the imagesToProcess parameter
     files = glob.glob(os.path.join(sourceFolder, "*.png"))
     imgCont = 1
-    numRows = min(len(files),imagesToProcess)
+    if imagesToProcess == 0:
+        numRows = len(files)
+    else:
+        numRows = min(len(files),imagesToProcess)
     numFeatures = 5
     res = np.ndarray(shape = (numRows, 512*512 + numFeatures), dtype = np.uint8)
-    
+
     for file in files:
 
         if imgCont > imagesToProcess:
             break
-        
+
         # Extract the features
         features = encodeFingerprintClassFromFileName(file)
 
@@ -73,5 +74,5 @@ if __name__ == "__main__":
     trainFolder = os.path.join("DataSets", "NIST-SD4", "train")
     testFolder = os.path.join("DataSets", "NIST-SD4", "test")
 
-    processImages(trainFolder, os.path.join(trainFolder, "trainData.txt"), 5)
-    processImages(testFolder, os.path.join(testFolder, "testData.txt"), 1)
+    processImages(trainFolder, os.path.join(trainFolder, "trainData.txt"))
+    processImages(testFolder, os.path.join(testFolder, "testData.txt"))
