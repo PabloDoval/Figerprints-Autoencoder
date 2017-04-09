@@ -15,7 +15,7 @@ The database is evenly distributed over each of the five classifications with 40
 The text file that accompanies each image gives the Gender, Class and History information extracted from the ANSI/NIST-ITL formatted (AN2) file.
 
 NIST Special Database 4 has the following features:
-
+ 
 + 2000 8-bit gray scale fingerprint image pairs including classifications
 + 400 fingerprint pairs from each of the five classifications - Arch, Left and Right Loops, Tented Arch, Whirl)
 + each of the fingerprint pairs are two completely different rollings of the same fingerprint
